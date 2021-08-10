@@ -1,10 +1,10 @@
+import { useEffect } from 'react'
+import play from '../playground'
+
 export default function Home() {
-  const message: string = 'Hello world'
+  useEffect(() => {
+    play()
+  }, [])
 
-  let a: AddEventListenerOptions
-  let b: NodeJS.Process
-
-  console.info(b.browser)
-
-  return <div>{message}</div>
+  return <div>Hello World</div>
 }
