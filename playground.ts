@@ -3,9 +3,9 @@ export default function play() {
   
   if (typeof random === 'string') {
     const upper = random.toUpperCase()
-    console.info('string', upper)
+    console.info('通過 string', upper)
   } else {
-    console.info('number', random)
+    console.info('通過 number', random)
   }
 
   console.info(random.length)
