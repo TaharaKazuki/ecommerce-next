@@ -3,7 +3,13 @@ interface Person {
   age: number
 }
 
-type Data = string
+// interface PersonLoggerFn {
+//   (name: string, age: number): string
+// }
+
+type PersonLoggerFn = (name: string, age: number) => string
+
+
 
 // type Person = {
 //   name: string
@@ -11,7 +17,7 @@ type Data = string
 // }
 
 export default function play() {
-  const name: Data = 'Filip'
+  const name: string = 'Filip'
   const age: number = 30
 
   const person: Person = {
@@ -19,10 +25,10 @@ export default function play() {
     age: 34
   }
 
-  function logPersonInfo(personName: string, personAge: number) {
+  const logPersonInfo: PersonLoggerFn = (personName: string, personAge: number): string => {
     const info = `Name: ${personName}, age: ${personAge}`
-    console.info(info)
-    return info
+      console.info(info)
+      return info
   }
 
   function logPersonInfo2(person: Person) {
@@ -31,6 +37,6 @@ export default function play() {
     return info
   }
 
-  logPersonInfo(name, age)
+  const log = logPersonInfo(name, age)
   logPersonInfo2(person)
 }
