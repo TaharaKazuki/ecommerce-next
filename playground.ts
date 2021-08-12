@@ -1,30 +1,37 @@
 interface Person {
-  kind: 'business' | 'academic' | 'otherType'
   name: string
+}
+
+
+interface Student extends Person {
   age: number
 }
 
-interface BusinessPerson extends Person {
-  kind: 'business'
-  salary: number
+interface PostGraduadeStudent extends Person {
+  age: number
+  project: string[]
 }
 
-interface AcademicPerson extends Person {
-  kind: 'academic'
-  publications: string[]
-}
-
-interface Person {
-  prop1: string
-  prop2: number
+interface StudentInfo<T extends Student = Student>{
+  data: T
+  grades: number[]
 }
 
 export default function play() {
-  function iterate(items: Array<string>) {
-    items.forEach((item) => {
-      console.info(item.toUpperCase())
-    })
+  function logStudentInfo(info: StudentInfo<PostGraduadeStudent>){
+    console.info(info.data.name)
+    console.info(info.data.age)
+    console.info(info.data.project)
   }
 
-  iterate(['filip', 'john', 'tom'])
+  const info = {
+    data: {
+      name: 'Filip',
+      age: 30,
+      project: ['']
+    },
+    grades: [1]
+  }
+
+  logStudentInfo(info)
 }
