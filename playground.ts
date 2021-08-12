@@ -7,27 +7,26 @@ interface Student extends Person {
 }
 
 interface PostGraduadeStudent extends Person {
-  age: number
-  project: string[]
+  projects: string[]
 }
 
-interface StudentInfo<T extends Student = Student> {
-  data: T
-  grades: number[]
-}
+type StudentInfo<T extends any = Student> = T extends Student
+  ? {
+      data: T
+      grades: number[]
+    }
+  : string
+
+type Car = { engine: string }
 
 export default function play() {
-  function logStudentInfo(info: StudentInfo<PostGraduadeStudent>) {
-    console.info(info.data.name)
-    console.info(info.data.age)
-    console.info(info.data.project)
+  function logStudentInfo(info: StudentInfo<Student>) {
+    console.info(info)
   }
-
   const info = {
     data: {
-      name: 'Filip',
-      age: 30,
-      project: ['']
+      name: 'filip',
+      age: 30
     },
     grades: [1]
   }
