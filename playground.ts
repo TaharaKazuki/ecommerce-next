@@ -2,7 +2,6 @@ interface Person {
   name: string
 }
 
-
 interface Student extends Person {
   age: number
 }
@@ -12,13 +11,13 @@ interface PostGraduadeStudent extends Person {
   project: string[]
 }
 
-interface StudentInfo<T extends Student = Student>{
+interface StudentInfo<T extends Student = Student> {
   data: T
   grades: number[]
 }
 
 export default function play() {
-  function logStudentInfo(info: StudentInfo<PostGraduadeStudent>){
+  function logStudentInfo(info: StudentInfo<PostGraduadeStudent>) {
     console.info(info.data.name)
     console.info(info.data.age)
     console.info(info.data.project)
