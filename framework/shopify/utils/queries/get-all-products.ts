@@ -1,25 +1,25 @@
 const productConnection = `
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-    }
-    edges {
-      node {
-        id
-        title
-        vendor
-        handle
-        description
-        priceRange {
-          minVariantPrice {
-            amount
-            currencyCode
-          }
+  pageInfo {
+    hasNextPage
+    hasPreviousPage
+  }
+  edges {
+    node {
+      id
+      title
+      vendor
+      handle
+      description
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
         }
-        images(first: 1) {
-          pageInfo {
-            hasNextPage
-            hasPreviousPage
+      }
+      images(first: 1) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
         }
         edges {
           node {
@@ -36,7 +36,7 @@ const productConnection = `
 
 const getAllProductsQuery = `
   query getAllProducts($first: Int = 250) {
-    productConnection(first: $first) {
+    products(first: $first) {
       ${productConnection}
     }
   }
